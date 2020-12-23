@@ -9,13 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const SearchController_1 = require("./SearchController");
 exports.default = [
     {
-        path: "/",
+        path: "/api/v1/search",
         method: "get",
-        handler: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-            res.send("Hello world!");
-        })
+        handler: [
+            ({ query }, res) => __awaiter(void 0, void 0, void 0, function* () {
+                const result = yield SearchController_1.getPlacesByName('query.q');
+                res.status(200).send(result);
+            })
+        ]
     }
 ];
 //# sourceMappingURL=routes.js.map
