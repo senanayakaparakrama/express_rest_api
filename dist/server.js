@@ -14,4 +14,12 @@ utils_1.applyRoutes(services_1.default, router);
 const { PORT = 3000 } = process.env;
 const server = http_1.default.createServer(router);
 server.listen(PORT, () => console.log(`Server is running http://localhost:${PORT}...`));
+process.on("uncaughtException", e => {
+    console.log(e);
+    process.exit(1);
+});
+process.on("unhandledRejection", e => {
+    console.log(e);
+    process.exit(1);
+});
 //# sourceMappingURL=server.js.map
